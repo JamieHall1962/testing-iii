@@ -1,3 +1,5 @@
+// https://github.com/JamieHall1962/testing-iii/pull/1
+
 // Test away
 import React from 'react';
 import {render, fireEvent} from 'react-testing-library';
@@ -15,12 +17,12 @@ describe('<Dashboard />',()=>{
         const lockButton = getByTestId ('lockUnlockButton');
         const closeButton = getByTestId ('openCloseButton');
         it ('Lock button is disabled', () => {
-            expect (closeButton).toBeDisabled();
+            expect (closeButton.disabled).toBe(true);
         });
         it ('Close button is disabled', () => {
             fireEvent.click (closeButton);
             fireEvent.click (lockButton);
-            expect (closeButton).toBeDisabled ();
+            expect (closeButton.disabled).toBe(true);
         });
 
     });
@@ -32,37 +34,17 @@ describe('<Dashboard />',()=>{
         const closeButton = getByTestId ('openCloseButton');
         it('Lock button reactivates', () => {
             fireEvent.click(lockButton)
-            expect (lockButton).not.toBeDisabled ();
+            expect (lockButton.disabled).toBe(false);
         });
         it('Close Button Reactivates', () => {            
             fireEvent.click(lockButton)
             fireEvent.click (closeButton);
             fireEvent.click (lockButton);
-            expect (lockButton).not.toBeDisabled ();
+            expect (lockButton.disabled).toBe(false);
         });
 
     });
-    // describe ('Indicators whould flip between green and red', () => {
-    //     // const lock = getByTestId ('lockUnlock');
-    //     // const open = getByTestId ('openClose');
-    //     const lockButton = getByTestId ('lockUnlockButton');
-    //     const closeButton = getByTestId ('openCloseButton');
-    //     it.skip ('Lock button is green on render', () => {
-    //         expect (lock).toHaveClassName('green-led')
-    //     });
-    //     it.skip ('gate button is green on render', () => {
-    //         expect (open).toHaveClassName ('green-led');
-    //     });
-    //     it.skip('closed gate is red',()=>{
-    //         fireEvent.click(lockButton)
-    //         expect(lock).toHaveClassName('red-led')
-    //     })
-    //     it.skip('locked gate is red', () => {
-    //         fireEvent.click (closeButton);
-    //         expect (open).toHaveClassName ('red-led');
-    //     });
-
-    // });
+   
     
 
 })
