@@ -6,8 +6,8 @@ const Display = ({ closed, locked }) => {
 
   return (
     <div className="display panel">
-      <div className={lockedClass}>{locked ? 'Locked' : 'Unlocked'}</div>
-      <div className={closedClass}>{closed ? 'Closed' : 'Open'}</div>
+      <div data-testid = "lockUnlock" className={lockedClass}>{locked ? 'Locked' : 'Unlocked'}</div>
+      <div data-testid = "openClose" className={closedClass}>{closed ? 'Closed' : 'Open'}</div>
     </div>
   );
 };
